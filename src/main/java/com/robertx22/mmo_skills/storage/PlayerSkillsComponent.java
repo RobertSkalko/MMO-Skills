@@ -5,6 +5,8 @@ import nerdhub.cardinal.components.api.util.sync.EntitySyncedComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.Formatting;
 
@@ -36,11 +38,14 @@ public class PlayerSkillsComponent implements EntitySyncedComponent {
 
     public void addExp(PlayerSkills skill, int exp) {
 
-        String needed = ", " + get(skill).getExp() + "/" + get(skill).getExpNeededForNextLevel();
+        boolean leveled = get(skill).addExp(exp, skill);
 
+        String needed = ", " + get(skill).getExp() + "/" + get(skill).getExpNeededForNextLevel();
         player.sendMessage(new LiteralText("+" + exp + " " + skill.name() + " exp" + needed).formatted(Formatting.YELLOW), false);
 
-        if (get(skill).addExp(exp, skill)) {
+        if (leveled) {
+            player.world.playSound(null, player.getBlockPos(), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 1, 1);
+
             player.sendMessage(new LiteralText(skill.name() + " Leveled up!").formatted(Formatting.BOLD, Formatting.GOLD), false);
         }
 

@@ -18,4 +18,9 @@ public class BlockConfig {
             .toString();
         this.exp = exp;
     }
+
+    public BlockConfig() {
+
+    }
+
 }

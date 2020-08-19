@@ -22,6 +22,10 @@ public class SkillRewardConfig {
     // what reward is done first, this is used so extra drops is called after double drops.
     public int priority = 0;
 
+    public SkillRewardConfig() {
+
+    }
+
     public SkillRewardConfig(PlayerSkills skill, String skillReward, float pertier) {
         this.skill = skill;
         this.skillReward = skillReward;

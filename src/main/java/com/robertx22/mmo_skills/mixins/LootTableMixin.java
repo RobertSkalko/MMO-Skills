@@ -18,10 +18,9 @@ import java.util.List;
 @Mixin(LootTable.class)
 public class LootTableMixin {
 
-    @ModifyVariable(method = "generateLoot(Lnet/minecraft/loot/context/LootContext;)Ljava/util/List;", at = @At("RETURN"), name = "list")
+    @ModifyVariable(method = "generateLoot(Lnet/minecraft/loot/context/LootContext;)Ljava/util/List;", at = @At("RETURN"), ordinal = 0)
     public List<ItemStack> lootHook(List<ItemStack> list, LootContext context) {
         LootTable table = (LootTable) (Object) this;
-
         LootTableMethods.hook(table, context, list);
         return list;
     }

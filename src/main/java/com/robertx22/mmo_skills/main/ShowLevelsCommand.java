@@ -35,7 +35,6 @@ public class ShowLevelsCommand {
                     .then(literal("levels")
                         .then(argument("skill", StringArgumentType.word())
                             .suggests(new suggestions())
-                            .requires(e -> e.hasPermissionLevel(2))
                             .executes(ctx -> run(ctx.getSource(), StringArgumentType.getString(ctx, "skill")))))));
     }
 

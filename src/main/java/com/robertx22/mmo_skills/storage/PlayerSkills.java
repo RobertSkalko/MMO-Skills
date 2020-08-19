@@ -49,9 +49,15 @@ public enum PlayerSkills {
     public final List<MutableText> getShortTooltip(PlayerSkillsComponent comp) {
 
         List<MutableText> list = new ArrayList<>();
-        list.add(new LiteralText(name() + ": Level: " + comp.getLevel(this) + ", Exp: " + comp.get(this)
+
+        MutableText name = new LiteralText(name() + ": ").formatted(Formatting.BLUE);
+        MutableText level = new LiteralText("LVL: " + comp.getLevel(this)).formatted(Formatting.YELLOW);
+        MutableText exp = new LiteralText(", EXP: " + comp.get(this)
             .getExp() + "/" + comp.get(this)
-            .getExpNeededForNextLevel()).formatted(Formatting.GREEN));
+            .getExpNeededForNextLevel()).formatted(Formatting.GREEN);
+
+        list.add(name.append(level)
+            .append(exp));
 
         return list;
 
