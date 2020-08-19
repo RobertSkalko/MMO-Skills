@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.robertx22.mmo_skills.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "LootContextMixin",
+    "LootTableMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

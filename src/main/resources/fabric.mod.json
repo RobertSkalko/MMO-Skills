@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "mmo_skills",
+  "version": "1.0.0",
+  "name": "MMO Skills",
+  "description": "Level up skills, gain rewards!",
+  "authors": [
+    "mcrobertx22"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/balance-of-exile",
+    "sources": "https://github.com/RobertSkalko/Balance-of-Exile"
+  },
+  "license": "",
+  "icon": "icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main":   ["com.robertx22.mmo_skills.main.CommonInit"],
+	"client": ["com.robertx22.mmo_skills.main.ClientInit"],
+	"modmenu":["com.robertx22.mmo_skills.main.ModMenuIntegration"]	
+  },
+  "mixins": [   
+  "mmo_skills.mixins.json"
+  ],
+
+  "depends": { 
+	"minecraft": "1.16.2",	
+    "fabricloader": ">=0.9.0",   
+	"fabric": ">=0.15.0",
+	"library_of_exile": ">=1.0.2"
+  },
+  "suggests": {
+    "age_of_exile": "*"
+  }
+  
+}
